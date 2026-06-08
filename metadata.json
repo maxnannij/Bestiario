@@ -1,0 +1,6 @@
+{
+  "name": "Bestiario de Monstruos",
+  "description": "Base de datos interactiva del bestiario de monstruos de rol, con buscador, filtros de tipo, nivel y desafío.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
