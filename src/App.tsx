@@ -401,7 +401,7 @@ export default function App() {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Buscar criatura por nombre, tipo o rasa..."
+                    placeholder="Buscar criatura por nombre, tipo o raza..."
                     className="w-full bg-[#09090b] text-white pl-10 pr-4 py-2.5 rounded-sm border border-[#2a2a2e] focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] focus:outline-none placeholder-gray-600 text-xs font-mono"
                   />
                   {searchQuery && (
@@ -451,7 +451,7 @@ export default function App() {
                 {/* Filter list for MonsterType */}
                 <div>
                   <label className="block text-[10px] uppercase font-mono tracking-wider text-gray-400 mb-1.5 font-bold">
-                    Filtrar por Especialización
+                    Filtrar por Tipo de Criatura / Rol
                   </label>
                   <select
                     value={selectedType}

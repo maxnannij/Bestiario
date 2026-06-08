@@ -1449,6 +1449,1345 @@ export const LIMBO_SAMPLE_ENCOUNTERS = [
 ];
 
 // ==========================================
+// 9. MONSTRUOSIDADES
+// ==========================================
+
+export const MONSTRUOSIDAD_GROUP_TRAIT = {
+  name: "Presencia Aterradora",
+  description: "Cuando una Monstruosidad reduce a un enemigo a la mitad de sus puntos de golpe máximos o menos, todos los aliados de la monstruosidad en un radio de 3 casillas obtienen ventaja en su próximo ataque de inmediato debido al pánico sembrado.",
+  trigger: "Infligir gran daño o asustar a un objetivo"
+};
+
+export const MONSTRUOSIDADES_DATA: Monster[] = [
+  {
+    id: "monstruosidad-basilisco-minion",
+    name: "Cría de Basilisco del Fango",
+    englishName: "Mud Basilisk Hatchling",
+    level: "1/2",
+    levelValue: 0.5,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "6 casillas",
+    armor: ArmorType.None,
+    challengeRating: "1/4",
+    type: MonsterType.Minion,
+    group: "Monstruosidades",
+    groupDescription: "Criaturas feroces de anatomía alterada o poderes anómalos no naturales.",
+    groupTrait: MONSTRUOSIDAD_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural en el dado."
+      },
+      {
+        name: "Piel Escamosa",
+        description: "El primer ataque físico de cada turno que sufra esta cría cuenta con reducción de 1 de daño."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordisco Petrificante Menor",
+        description: "Dentellada que entumece las articulaciones del objetivo.",
+        damageDice: "1d4"
+      }
+    ]
+  },
+  {
+    id: "monstruosidad-grifo-oxidado",
+    name: "Grifo de Plumas Metálicas",
+    englishName: "Metallic-Feathered Griffon",
+    level: "1",
+    levelValue: 1.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 24,
+    hpMax: 24,
+    speed: "7 casillas",
+    armor: ArmorType.Medium,
+    challengeRating: "1/2",
+    type: MonsterType.Normal,
+    group: "Monstruosidades",
+    groupDescription: "Criaturas feroces de anatomía alterada o poderes anómalos no naturales.",
+    groupTrait: MONSTRUOSIDAD_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Picada de Caza",
+        description: "Si se mueve al menos 4 casillas antes de atacar, su picotazo inflige 2 de daño adicional y puede empujar 1 casilla al objetivo."
+      }
+    ],
+    attacks: [
+      {
+        name: "Picotazo Desgarrador",
+        description: "Corte pesado con su afilado pico de latón.",
+        damageDice: "1d10+2"
+      }
+    ]
+  },
+  {
+    id: "monstruosidad-quimera",
+    name: "Engendro de Quimera Menor",
+    englishName: "Lesser Chimera Spawn",
+    level: "2",
+    levelValue: 2.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 48,
+    hpMax: 48,
+    speed: "6 casillas",
+    armor: ArmorType.Heavy,
+    challengeRating: "1.0",
+    type: MonsterType.Elite,
+    group: "Monstruosidades",
+    groupDescription: "Criaturas feroces de anatomía alterada o poderes anómalos no naturales.",
+    groupTrait: MONSTRUOSIDAD_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Exhalación Ígnea",
+        description: "Una vez por encuentro, exhala fuego en un cono de 3 casillas. Daño 2d6 a todos los objetivos en el área."
+      }
+    ],
+    attacks: [
+      {
+        name: "Garras y Mordisco Cósmico",
+        description: "Ataques encadenados de cabeza de cabra y león combinados.",
+        damageDice: "1d8+3",
+        isMultiAttack: true,
+        multiattackCount: 2
+      }
+    ]
+  }
+];
+
+export const MONSTRUOSIDADES_LOOT = [
+  "Pluma metálica pulida sumamente afilada que brilla como cobre",
+  "Frasco con bilis de basilisco densa de color amarillo fosforescente",
+  "Cuerno de bronce pequeño roto con runas místicas grabadas",
+  "Garra curtida perfecta para usarse como punta de flecha o daga",
+  "Garra de grifo seca con restos de cenizas calientes de volcán",
+  "Ojo petrificado de reptil que conserva un brillo ámbar sutil"
+];
+
+// ==========================================
+// 10. LIMOS Y OOZES
+// ==========================================
+
+export const OOZE_GROUP_TRAIT = {
+  name: "Cuerpo Amorfo y Ácido",
+  description: "Los limos y oozes ignoran los efectos de agarre, parálisis y daño por caída. Además, cualquier ataque de arma cuerpo a cuerpo no mágica que golpee a un Ooze hace que el arma sufra desgaste corrosivo imitando 2 puntos de daño ácido al atacante.",
+  trigger: "Ser atacado cuerpo a cuerpo o deslizarse"
+};
+
+export const OOZES_DATA: Monster[] = [
+  {
+    id: "ooze-puddle-minion",
+    name: "Pudín de Ácido Errante",
+    englishName: "Errant Acid Puddle",
+    level: "1/2",
+    levelValue: 0.5,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "4 casillas",
+    armor: ArmorType.None,
+    challengeRating: "1/4",
+    type: MonsterType.Minion,
+    group: "Limos y Oozes",
+    groupDescription: "Masas protoplasmáticas sin mente que deambulan devorando cualquier materia orgánica o metálica que crucen.",
+    groupTrait: OOZE_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural en el dado."
+      },
+      {
+        name: "Propagación Corrosiva",
+        description: "Al morir, estalla en un charco de ácido de 1 casilla que inflige 2 de daño de ácido a quien lo pise en su turno."
+      }
+    ],
+    attacks: [
+      {
+        name: "Pseudópodo Ácido",
+        description: "Pequeño latigazo viscoso que derrite telas y cuero.",
+        damageDice: "1d4"
+      }
+    ]
+  },
+  {
+    id: "ooze-gelatinous-cube",
+    name: "Cubo Gelatinoso Ancestral",
+    englishName: "Ancient Gelatinous Cube",
+    level: "2",
+    levelValue: 2.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 38,
+    hpMax: 38,
+    speed: "4 casillas",
+    armor: ArmorType.None,
+    challengeRating: "1.0",
+    type: MonsterType.Normal,
+    group: "Limos y Oozes",
+    groupDescription: "Masas protoplasmáticas sin mente que deambulan devorando cualquier materia orgánica o metálica que crucen.",
+    groupTrait: OOZE_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Cuerpo Transparente",
+        description: "Si el Cubo no se ha movido este turno, requiere una tirada de Percepción exitosa para ser detectado. Los héroes que no lo detecten y entren en su casilla quedan Engullidos, sufriendo 3 de daño de ácido al inicio de cada uno de sus turnos hasta que escapen de su interior."
+      }
+    ],
+    attacks: [
+      {
+        name: "Engullir y Absorber",
+        description: "Estirar su forma cúbica para engullir materia viva completa.",
+        damageDice: "1d10+2"
+      }
+    ]
+  },
+  {
+    id: "ooze-slime-lord",
+    name: "Limo Carnívoro Sangriento",
+    englishName: "Bloody Carnivorous Slime",
+    level: "3",
+    levelValue: 3.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 54,
+    hpMax: 54,
+    speed: "5 casillas",
+    armor: ArmorType.Medium,
+    challengeRating: "2.0",
+    type: MonsterType.Leader,
+    group: "Limos y Oozes",
+    groupDescription: "Masas protoplasmáticas sin mente que deambulan devorando cualquier materia orgánica o metálica que crucen.",
+    groupTrait: OOZE_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "División Celular",
+        description: "Al caer por primera vez por debajo del 50% de sus puntos de golpe máximos (27 HP), genera inmediatamente un Pudín de Ácido Errante en una casilla libre adyacente para confundir a los atacantes."
+      }
+    ],
+    attacks: [
+      {
+        name: "Azote Envolvente Corrosivo",
+        description: "Latigazos gruesos ruidosos cargados de burbujas digestivas.",
+        damageDice: "2d6+4",
+        isMultiAttack: true,
+        multiattackCount: 2
+      }
+    ]
+  }
+];
+
+export const OOZES_LOOT = [
+  "Frasco hermético con gelatina verde brillante que gotea lentamente",
+  "Gema semipreciosa tragada a medio digerir que aún brilla",
+  "Punta de flecha derretida que conserva un sutil halo templado",
+  "Vial de ácido corrosivo útil para derretir cerraduras simples",
+  "Restos de un escudo de acero disuelto y deformado por completo",
+  "Esencia líquida viscosa que emite burbujas al exponerse al aire"
+];
+
+// ==========================================
+// 11. COLINAS Y CAMPOS (HILL & FIELD)
+// ==========================================
+
+export const HILLS_AND_FIELDS_GROUP_TRAIT = {
+  name: "Terreno Abierto e Impredecible",
+  description: "Las criaturas de Colinas y Campos dominan la caza en espacios abiertos. Mientras se encuentren bajo luz natural o cielo abierto, obtienen un bono de +1 casilla a su velocidad de movimiento. Además, si inician su turno escondidas o tienen cobertura, su primer ataque de ese turno inflige 1d4 de daño adicional.",
+  trigger: "Moverse bajo cielo abierto o atacar usando cobertura"
+};
+
+export const HILLS_AND_FIELDS_DATA: Monster[] = [
+  {
+    id: "hill-field-blood-crow-minion",
+    name: "Cuervo Sanguinario de los Campos",
+    englishName: "Crop Blood Crow",
+    level: "1/2",
+    levelValue: 0.5,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "2 casillas (Vuelo 8 casillas)",
+    armor: ArmorType.None,
+    challengeRating: "1/4",
+    type: MonsterType.Minion,
+    group: "Colinas y Campos",
+    groupDescription: "Criaturas salvajes, depredadores hambrientos y guardianes de las llanuras que acechan en los pastizales.",
+    groupTrait: HILLS_AND_FIELDS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural en el dado."
+      },
+      {
+        name: "Caza Distractiva",
+        description: "Mientras este cuervo esté adyacente a un enemigo, los aliados del cuervo obtienen ventaja en tiradas de ataque contra ese enemigo."
+      }
+    ],
+    attacks: [
+      {
+        name: "Picotazo al Ojo",
+        description: "Ataque rápido de vuelo directo apuntando a las partes blandas.",
+        damageDice: "1d4"
+      }
+    ]
+  },
+  {
+    id: "hill-field-bulette-pup",
+    name: "Cría de Bulette de las Praderas",
+    englishName: "Prairie Bulette Pup",
+    level: "1",
+    levelValue: 1.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 26,
+    hpMax: 26,
+    speed: "5 casillas (Excavar 4 casillas)",
+    armor: ArmorType.Medium,
+    challengeRating: "1/2",
+    type: MonsterType.Normal,
+    group: "Colinas y Campos",
+    groupDescription: "Criaturas salvajes, depredadores hambrientos y guardianes de las llanuras que acechan en los pastizales.",
+    groupTrait: HILLS_AND_FIELDS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Erupciones de Tierra",
+        description: "Cuando la cría de Bulette emerge de excavar, todos los enemigos adyacentes a la casilla por la que sale deben superar una tirada de salvación de Fuerza o quedar tumbados."
+      }
+    ],
+    attacks: [
+      {
+        name: "Zarpazo Terrestre",
+        description: "Golpe pesado con sus garras delanteras blindadas.",
+        damageDice: "1d8+2"
+      }
+    ]
+  },
+  {
+    id: "hill-field-scarecrow-stalker",
+    name: "Acechador de Paja de Algodón",
+    englishName: "Cotton Scarecrow Stalker",
+    level: "2",
+    levelValue: 2.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 36,
+    hpMax: 36,
+    speed: "6 casillas",
+    armor: ArmorType.None,
+    challengeRating: "1",
+    type: MonsterType.Normal,
+    group: "Colinas y Campos",
+    groupDescription: "Criaturas salvajes, depredadores hambrientos y guardianes de las llanuras que acechan en los pastizales.",
+    groupTrait: HILLS_AND_FIELDS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Mirada Aterradora",
+        description: "Cualquier criatura viva que inicie su turno a 3 casillas o menos del espantapájaros debe superar un chequeo mental o sufrir desventaja en sus tiradas de ataque debido al terror psicológico."
+      }
+    ],
+    attacks: [
+      {
+        name: "Garras de Guadaña",
+        description: "Cuchillas oxidadas atadas a sus dedos de madera que cortan la carne.",
+        damageDice: "2d4+2"
+      }
+    ]
+  },
+  {
+    id: "hill-field-ankheg-reaper",
+    name: "Ankheg Segador de Cosechas",
+    englishName: "Ankheg Crop Reaper",
+    level: "3",
+    levelValue: 3.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 52,
+    hpMax: 52,
+    speed: "6 casillas (Excavar 3 casillas)",
+    armor: ArmorType.Heavy,
+    challengeRating: "2",
+    type: MonsterType.Leader,
+    group: "Colinas y Campos",
+    groupDescription: "Criaturas salvajes, depredadores hambrientos y guardianes de las llanuras que acechan en los pastizales.",
+    groupTrait: HILLS_AND_FIELDS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Mandíbulas de Presión",
+        description: "Si el Ankheg acierta su ataque de mordisco, atrapa al objetivo. El objetivo queda agarrado (Velocidad 0) y sufre 4 de daño ácido al inicio de cada uno de sus turnos hasta que escape."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordisco Corrosivo Presor",
+        description: "Pinzas afiladas cargadas de jugos altamente corrosivos que trituran metal y huesos.",
+        damageDice: "2d6+3"
+      },
+      {
+        name: "Chorro de Ácido Lineal",
+        description: "Escupe un chorro de ácido hirviente en una línea de 5 casillas (Recarga 5-6). Daño de 3d6 ácido a todos en el área, o mitad si superan un chequeo de Destreza.",
+        damageDice: "3d6"
+      }
+    ]
+  }
+];
+
+export const HILLS_AND_FIELDS_LOOT = [
+  "Espiga de trigo de oro macizo que nunca se marchita",
+  "Frasco de veneno recolectado de las glándulas de un Ankheg",
+  "Guadaña de mano oxidada pero extrañamente ligera y letal",
+  "Plumas de cuervo negro que brillan como amatistas bajo el sol",
+  "Placa quitinosa de Bulette excelente para reforzar armaduras",
+  "Semilla de calabaza gigante maldita que susurra por las noches"
+];
+
+export const HILLS_AND_FIELDS_SAMPLE_ENCOUNTERS = [
+  {
+    name: "Emboscada en el Trigal",
+    monsters: [
+      { id: "hill-field-ankheg-reaper", count: 1 },
+      { id: "hill-field-scarecrow-stalker", count: 2 },
+      { id: "hill-field-blood-crow-minion", count: 4 }
+    ],
+    description: "Un grupo de campesino fantásticos y acechadores emergen silenciosamente de las espigas de un trigal maldito dirigidos por un enorme Ankheg."
+  },
+  {
+    name: "La Guarida Excavadora",
+    monsters: [
+      { id: "hill-field-bulette-pup", count: 2 },
+      { id: "hill-field-ankheg-reaper", count: 1 }
+    ],
+    description: "Bajo la tierra de las colinas áridas, crías de bulettes y un ankheg cazan en perfecta y letal simbiosis."
+  }
+];
+
+// ==========================================
+// 12. DRAGONES Y DRACOS (DRAGONS & DRAKES)
+// ==========================================
+
+export const DRAGON_GROUP_TRAIT = {
+  name: "Presencia Abrasadora",
+  description: "Las criaturas dracónicas exudan un aura de pánico y calor elemental. Cualquier enemigo que comience su turno a 1 casilla de una criatura dracónica activa sufre de inmediato 1d6 de daño elemental (Fuego, Frío o Eléctrico) y no puede realizar reacciones en este turno (CD de salvación física/mental 12).",
+  trigger: "Iniciar el turno adyacente a una criatura dracónica"
+};
+
+export const DRAGONS_DATA: Monster[] = [
+  {
+    id: "dragon-ash-drake-minion",
+    name: "Cría de Draco de las Cenizas",
+    englishName: "Ash Drake Wyrmling",
+    level: "1",
+    levelValue: 1.0,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "3 casillas (Vuelo 6 casillas)",
+    armor: ArmorType.None,
+    challengeRating: "1/4",
+    type: MonsterType.Minion,
+    group: "Dragones y Dracos",
+    groupDescription: "Señores del cielo y las profundidades primigenias. Desde crueles dracos menores hasta titanes de escamas impenetrables que dominan la magia elemental.",
+    groupTrait: DRAGON_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural en el dado."
+      },
+      {
+        name: "Hambre Ígnea",
+        description: "Si un enemigo adyacente cae inconsciente o muere, el Draco obtiene un ataque de picotazo inmediato de forma gratuita."
+      }
+    ],
+    attacks: [
+      {
+        name: "Picotazo Caliente",
+        description: "Dentellada rápida cargada con chispas de azufre.",
+        damageDice: "4 fuego"
+      }
+    ]
+  },
+  {
+    id: "dragon-frost-drake",
+    name: "Draco de Escarcha de los Riscos",
+    englishName: "Crag Frost Drake",
+    level: "3",
+    levelValue: 3.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 38,
+    hpMax: 38,
+    speed: "5 casillas (Escalar 4 casillas)",
+    armor: ArmorType.Medium,
+    challengeRating: "1",
+    type: MonsterType.Normal,
+    group: "Dragones y Dracos",
+    groupDescription: "Señores del cielo y las profundidades primigenias. Desde crueles dracos menores hasta titanes de escamas impenetrables que dominan la magia elemental.",
+    groupTrait: DRAGON_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Escamas de Glaciar",
+        description: "Cuando el draco es golpeado por un ataque cuerpo a cuerpo, el atacante sufre 1d4 de daño de frío debido al aura gélida que brota de sus escamas congeladas."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordisco de Hielo Seco",
+        description: "Mordedura pesada que petrifica los tejidos con frío extremo.",
+        damageDice: "1d10+3"
+      },
+      {
+        name: "Coletazo Congelante",
+        description: "Látigo veloz con su cola acorazada. Reduce la velocidad del objetivo en 2 casillas en su próximo turno.",
+        damageDice: "1d6+2"
+      }
+    ]
+  },
+  {
+    id: "dragon-young-storm-tempest",
+    name: "Tempestad Dracónica Juvenil",
+    englishName: "Young Storm Wyrm",
+    level: "5",
+    levelValue: 5.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 82,
+    hpMax: 82,
+    speed: "6 casillas (Vuelo 10 casillas)",
+    armor: ArmorType.Medium,
+    challengeRating: "4",
+    type: MonsterType.Elite,
+    group: "Dragones y Dracos",
+    groupDescription: "Señores del cielo y las profundidades primigenias. Desde crueles dracos menores hasta titanes de escamas impenetrables que dominan la magia elemental.",
+    groupTrait: DRAGON_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Carga Voltaica",
+        description: "Cuando recibe daño eléctrico o al inicio de su turno, puede cargarse de corriente de forma inestable. En su siguiente ataque que impacte, inflige 2d6 de daño eléctrico adicional a un enemigo adyacente secundario."
+      },
+      {
+        name: "Resistencia Legendaria (1/día)",
+        description: "Si la Tempestad falla una tirada de salvación, puede elegir tener éxito en su lugar."
+      }
+    ],
+    attacks: [
+      {
+        name: "Zarpazo Relámpago",
+        description: "Garras envueltas en arcos de estática de alto voltaje.",
+        damageDice: "2d6+4"
+      },
+      {
+        name: "Aliento de Centellas",
+        description: "Exhala una línea eléctrica de 8 casillas (Recarga 5-6). Daño de 4d6 eléctrico a todos en la trayectoria, o mitad de daño con un salvamento exitoso de Destreza.",
+        damageDice: "4d6"
+      }
+    ]
+  },
+  {
+    id: "dragon-sulfur-flame",
+    name: "Dragón de Flama Sulfúrica",
+    englishName: "Sulfur Flame Dragon",
+    level: "8",
+    levelValue: 8.0,
+    size: "Enorme",
+    sizeEnglish: "Huge",
+    hp: 135,
+    hpMax: 135,
+    speed: "6 casillas (Vuelo 12 casillas)",
+    armor: ArmorType.Heavy,
+    challengeRating: "7",
+    type: MonsterType.Leader,
+    group: "Dragones y Dracos",
+    groupDescription: "Señores del cielo y las profundidades primigenias. Desde crueles dracos menores hasta titanes de escamas impenetrables que dominan la magia elemental.",
+    groupTrait: DRAGON_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Escudo de Lava",
+        description: "Cuando los puntos de golpe del dragón descienden por debajo de la mitad por primera vez (67 HP), emite una onda térmica expansiva. Todos los enemigos dentro de un radio de 2 casillas sufren 3d6 de daño de fuego instantáneo."
+      },
+      {
+        name: "Resistencia Legendaria (2/día)",
+        description: "Si falla una tirada de salvación, elige tener éxito de todas formas."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordisco Devastador",
+        description: "Tritura al objetivo entre fauces de fuego infernal.",
+        damageDice: "2d10+5"
+      },
+      {
+        name: "Garra Afilada Doble",
+        description: "Ataque rápido y de amplio barrido con garras que puede herir a dos criaturas adyacentes a la vez.",
+        damageDice: "2d6+4"
+      },
+      {
+        name: "Aliento del Volcán",
+        description: "Exhala una ráfaga de fuego en un cono de 6 casillas (Recarga 5-6). Daño de 6d6 de fuego a todos en el área, o mitad de daño con un salvamento con éxito de Destreza.",
+        damageDice: "6d6"
+      }
+    ]
+  }
+];
+
+export const DRAGON_LOOT = [
+  "Escama de dragón rojo perfectamente conservada e inmune al fuego extremo",
+  "Dije de jade tallado con la efigie de un dragón dorado de la antigüedad",
+  "Corazón de drakeling palpitante que emite calor radiante constante",
+  "Zafiro de tormenta cargado de arcos eléctricos estáticos latentes",
+  "Colmillo de dragón esculpido a mano como una daga rústica (+1 daño elemental)",
+  "Pergamino con antiguas runas escritas en el lenguaje dracónico puro de MCDM"
+];
+
+export const DRAGON_SAMPLE_ENCOUNTERS = [
+  {
+    name: "La Cerca de la Flama Silenciosa",
+    monsters: [
+      { id: "dragon-sulfur-flame", count: 1 },
+      { id: "dragon-ash-drake-minion", count: 4 }
+    ],
+    description: "Un imponente Dragón de Flama Sulfúrica despierta apoyado por sus fieles crías de dracos que vuelan en círculos cerrando el escape de los héroes."
+  },
+  {
+    name: "La Grieta de la Tempestad Gélida",
+    monsters: [
+      { id: "dragon-young-storm-tempest", count: 1 },
+      { id: "dragon-frost-drake", count: 2 }
+    ],
+    description: "Una tormenta violenta ruge en el paso de montaña cuando una Tempestad Dracónica Juvenil desciende de las nubes escoltada por dos letales dracos de escarcha."
+  }
+];
+
+// ==========================================
+// 13. ARAÑAS Y ARÁCNIDOS (SPIDERS & ARACHNIDS)
+// ==========================================
+
+export const SPIDERS_GROUP_TRAIT = {
+  name: "Red de Emboscada",
+  description: "Las arañas ignoran las penalizaciones de terreno difícil causadas por telarañas y trepan superficies sin necesidad de chequeos. Sus ataques cuerpo a cuerpo contra enemigos que estén atrapados, agarrados o tumbados infligen 1d6 de daño por veneno adicional.",
+  trigger: "Atacar a un objetivo con movilidad reducida (atrapado, agarrado o tumbado)"
+};
+
+export const SPIDERS_DATA: Monster[] = [
+  {
+    id: "spider-web-crawler-minion",
+    name: "Tejedor de Sombras Minion",
+    englishName: "Shadow Weaver Minion",
+    level: "2",
+    levelValue: 2.0,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "4 casillas (Trepar 4 casillas)",
+    armor: ArmorType.None,
+    challengeRating: "1/4",
+    type: MonsterType.Minion,
+    group: "Arañas y Arácnidos",
+    groupDescription: "Tejedores de sombras y venenosos cazadores de ocho patas que acechan en las cavernas y bosques oscuros.",
+    groupTrait: SPIDERS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural."
+      },
+      {
+        name: "Mordedura Sincronizada",
+        description: "Si más de dos arañas minion están adyacentes al mismo objetivo, todos sus ataques obtienen ventaja."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordisco de Colmillo Fino",
+        description: "Picadura rápida que inyecta toxinas leves.",
+        damageDice: "3 veneno"
+      }
+    ]
+  },
+  {
+    id: "spider-giant-harrier",
+    name: "Araña Acosadora Gigante",
+    englishName: "Giant Harrier Spider",
+    level: "4",
+    levelValue: 4.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 48,
+    hpMax: 48,
+    speed: "6 casillas (Trepar 6 casillas)",
+    armor: ArmorType.Medium,
+    challengeRating: "1",
+    type: MonsterType.Normal,
+    group: "Arañas y Arácnidos",
+    groupDescription: "Tejedores de sombras y venenosos cazadores de ocho patas que acechan en las cavernas y bosques oscuros.",
+    groupTrait: SPIDERS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Tejedora de Trampas",
+        description: "Puede esparcir una zona de telaraña de 2x2 casillas como una acción de reubicación. El terreno se vuelve difícil para criaturas sin el rasgo del grupo Arañas."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordedura Venenosa",
+        description: "Entierra sus enormes quelíceros e inyecta un veneno paralizante.",
+        damageDice: "2d6+3"
+      },
+      {
+        name: "Disparo de Red Seda",
+        description: "Lanza una red de seda viscosa a un objetivo hasta a 6 casillas de distancia. Si impacta, el objetivo queda atrapado (Velocidad 0) hasta que supere un chequeo de Fuerza.",
+        damageDice: "Especial"
+      }
+    ]
+  },
+  {
+    id: "spider-broodmother-leader",
+    name: "Gran Araña Viuda de la Camada",
+    englishName: "Great Broodmother Widow",
+    level: "6",
+    levelValue: 6.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 92,
+    hpMax: 92,
+    speed: "6 casillas (Trepar 6 casillas)",
+    armor: ArmorType.Heavy,
+    challengeRating: "4",
+    type: MonsterType.Leader,
+    group: "Arañas y Arácnidos",
+    groupDescription: "Tejedores de sombras y venenosos cazadores de ocho patas que acechan en las cavernas y bosques oscuros.",
+    groupTrait: SPIDERS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Nido Viviente",
+        description: "Cada vez que la Viuda de la Camada recibe daño por primera vez en un turno, emergen de inmediato 2 Tejedores de Sombras Minions en casillas adyacentes vacías."
+      },
+      {
+        name: "Aura de Veneno Volátil",
+        description: "Los enemigos a 2 casillas o menos de la Viuda sufren desventaja en sus tiradas de salvación contra venenos o estados de atrapado."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordisco Necrotizador Presor",
+        description: "Mordedura letal que pudre la carne y el equipamiento humano.",
+        damageDice: "2d8+4"
+      },
+      {
+        name: "Lluvia de Telaraña Hirviente",
+        description: "Ataque de cono de 5 casillas (Recarga 5-6) que baña a los héroes en hilos cáusticos pegajosos. Hace 4d6 de veneno y los atrapa en el área a menos que pasen un chequeo de Destreza.",
+        damageDice: "4d6"
+      }
+    ]
+  }
+];
+
+export const SPIDERS_LOOT = [
+  "Glándula de seda refinada que permite restaurar arcos o tejer mantos ligeros",
+  "Anillo de colmillo de araña chapado en bronce que añade veneno leve a las armas",
+  "Veneno concentrado de Viuda Negra lo suficientemente denso para fundir plata",
+  "Fragmento de capullo de seda lunar con propiedades regenerativas para heridas",
+  "Huevo de araña gigante que tiembla de hambre térmica",
+  "Ocarina de seda petrificada que atrae a pequeños arácnidos de las sombras"
+];
+
+export const SPIDERS_SAMPLE_ENCOUNTERS = [
+  {
+    name: "La Fosa de la Viuda de la Camada",
+    monsters: [
+      { id: "spider-broodmother-leader", count: 1 },
+      { id: "spider-giant-harrier", count: 2 },
+      { id: "spider-web-crawler-minion", count: 4 }
+    ],
+    description: "Una enorme masa de telarañas oscurece el fondo de la fosa cavernosa, donde una letal Viuda de la Camada acecha con su descendencia hambrienta."
+  }
+];
+
+// ==========================================
+// 14. TROLLS Y REGENERADORES (TROLLS & REGENERATORS)
+// ==========================================
+
+export const TROLLS_GROUP_TRAIT = {
+  name: "Furia de Regeneración",
+  description: "Estas feroces criaturas recuperan 2d6 puntos de golpe al inicio de cada uno de sus turnos si les queda al menos 1 punto de golpe. Si reciben daño de fuego o ácido, este factor de curación se desactiva por completo hasta el inicio de su siguiente turno.",
+  trigger: "Iniciar el turno con vida y no haber tomado daño de fuego o ácido en la ronda anterior."
+};
+
+export const TROLLS_DATA: Monster[] = [
+  {
+    id: "troll-scrawler-minion",
+    name: "Troll de Sanguijuela Minion",
+    englishName: "Leech Troll Minion",
+    level: "2",
+    levelValue: 2.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "5 casillas",
+    armor: ArmorType.None,
+    challengeRating: "1/2",
+    type: MonsterType.Minion,
+    group: "Trolls y Regeneradores",
+    groupDescription: "Bestias voraces y gigantescas con una capacidad de curación biológica absurdamente acelerada y garras implacables.",
+    groupTrait: TROLLS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural."
+      },
+      {
+        name: "Tenacidad Troll",
+        description: "La primera vez que este minion va a ser derrotado por un ataque que no inflija daño de fuego o ácido, hace una tirada de salvación de Fortaleza fácil (CD 10); si pasa, sobrevive con 1 punto de salud."
+      }
+    ],
+    attacks: [
+      {
+        name: "Arañazo Sucio",
+        description: "Garras mugrientas que infectan heridas de los héroes.",
+        damageDice: "4 físico"
+      }
+    ]
+  },
+  {
+    id: "troll-cave-hunter",
+    name: "Troll Sangre-Corrupta de Cueva",
+    englishName: "Cave Corrupted Troll",
+    level: "5",
+    levelValue: 5.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 84,
+    hpMax: 84,
+    speed: "6 casillas",
+    armor: ArmorType.Medium,
+    challengeRating: "3",
+    type: MonsterType.Normal,
+    group: "Trolls y Regeneradores",
+    groupDescription: "Bestias voraces y gigantescas con una capacidad de curación biológica absurdamente acelerada y garras implacables.",
+    groupTrait: TROLLS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Furia Desarrollada",
+        description: "Cuando los puntos de golpe del Troll descienden de la mitad de su HP máximo, sus ataques obtienen un dado adicional de daño físico (+1d6) y su velocidad de movimiento aumenta en +1 casilla."
+      }
+    ],
+    attacks: [
+      {
+        name: "Doble Garra Descalzante",
+        description: "Dos golpes feroces consecutivos con zarpas con garras.",
+        damageDice: "2d6+4"
+      },
+      {
+        name: "Mordisco de Fauces Gigantes",
+        description: "Intenta triturar la armadura del oponente de un solo mordisco.",
+        damageDice: "1d12+4"
+      }
+    ]
+  },
+  {
+    id: "troll-swamp-warlord",
+    name: "Rey Troll de los Pantanos",
+    englishName: "Swamp Troll Warlord",
+    level: "7",
+    levelValue: 7.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 118,
+    hpMax: 118,
+    speed: "6 casillas (Nadar 4 casillas)",
+    armor: ArmorType.Heavy,
+    challengeRating: "5",
+    type: MonsterType.Leader,
+    group: "Trolls y Regeneradores",
+    groupDescription: "Bestias voraces y gigantescas con una capacidad de curación biológica absurdamente acelerada y garras implacables.",
+    groupTrait: TROLLS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Hedor de Putrefacción",
+        description: "Todo enemigo vivo que inicie su turno adyacente al Rey Troll queda envenenado (desventaja en ataques) hasta el final de su turno debido a las esporas fétidas de su piel de lodo."
+      },
+      {
+        name: "Regeneración Legendaria (1/día)",
+        description: "Si es afectado por un efecto de control de masas pesado o aturdimiento, puede gastar esta resistencia para curarse y romper el efecto mágicamente al inicio de su turno."
+      }
+    ],
+    attacks: [
+      {
+        name: "Maza Rústica de Madera Petrificada",
+        description: "Golpe demoledor con una enorme porra improvisada.",
+        damageDice: "2d10+5"
+      },
+      {
+        name: "Desmembrar",
+        description: "Sujeta fuertemente a un objetivo con sus garras e intenta despedazarlo (Requiere agarrar primero).",
+        damageDice: "3d8+5"
+      }
+    ]
+  }
+];
+
+export const TROLLS_LOOT = [
+  "Glándula de sangre verde palpitante con un factor de curación increíble",
+  "Collar hecho con orejas secas amputadas de un troll de los riscos",
+  "Uña gigante afilada como daga que causa heridas que siguen sangrando",
+  "Piel de troll musgosa perfecta para fabricar botas de pantano",
+  "Gema ácida incrustada que vibra cuando entra en contacto con fuego cercano",
+  "Maza rústica de madera petrificada que pesa como piedra de montaña"
+];
+
+export const TROLLS_SAMPLE_ENCOUNTERS = [
+  {
+    name: "La Guarida del Rey del Pantano",
+    monsters: [
+      { id: "troll-swamp-warlord", count: 1 },
+      { id: "troll-cave-hunter", count: 1 },
+      { id: "troll-scrawler-minion", count: 4 }
+    ],
+    description: "En el espeso fango de los pantanos de lodo, un Rey Troll dirige a su horda en una cacería de aventureros confiados en su inmortalidad."
+  }
+];
+
+// ==========================================
+// 15. GIGANTES ELEMENTALES (ELEMENTAL GIANTS)
+// ==========================================
+
+export const GIANTS_GROUP_TRAIT = {
+  name: "Golpe de Falla Tectónica",
+  description: "Debido a su colosal impacto elemental, cuando un gigante asesta un golpe crítico o reduce a un enemigo a menos de la mitad de su vida, provoca un temblor de 2 casillas de radio que derriba a todos los enemigos terrestres y les causa 1d8 de daño por fuerza.",
+  trigger: "Impactar un golpe crítico o infligir daño masivo que baje al oponente de la mitad de su vida."
+};
+
+export const GIANTS_DATA: Monster[] = [
+  {
+    id: "giant-stone-scout-minion",
+    name: "Explorador de los Gigantes de Piedra Minion",
+    englishName: "Stone Giant Scout Minion",
+    level: "4",
+    levelValue: 4.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "6 casillas",
+    armor: ArmorType.Medium,
+    challengeRating: "1",
+    type: MonsterType.Minion,
+    group: "Gigantes Elementales",
+    groupDescription: "Antiquísimos titanes vinculados a las fuerzas puras del universo: tierra viva, fuego eterno y nubes de tormenta destructiva.",
+    groupTrait: GIANTS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural."
+      },
+      {
+        name: "Piel de Granito",
+        description: "Los minions de gigante de piedra son inmunes a los daños colaterales menores de área o ráfagas de viento."
+      }
+    ],
+    attacks: [
+      {
+        name: "Lanzamiento de Pedrusco Ciclópeo",
+        description: "Arroja un pedazo de roca tallada a gran distancia.",
+        damageDice: "6 físico"
+      }
+    ]
+  },
+  {
+    id: "giant-fire-forgekeeper",
+    name: "Gigante de Fuego Guardián de Forja",
+    englishName: "Fire Giant Forgekeeper",
+    level: "7",
+    levelValue: 7.0,
+    size: "Grande",
+    sizeEnglish: "Large",
+    hp: 125,
+    hpMax: 125,
+    speed: "5 casillas",
+    armor: ArmorType.Heavy,
+    challengeRating: "5",
+    type: MonsterType.Elite,
+    group: "Gigantes Elementales",
+    groupDescription: "Antiquísimos titanes vinculados a las fuerzas puras del universo: tierra viva, fuego eterno y nubes de tormenta destructiva.",
+    groupTrait: GIANTS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Forja Viviente",
+        description: "Al inicio de cada turno, el gigante irradia calor abrasador. Los enemigos a 1 casilla reciben 2d6 de daño por fuego de forma automática."
+      },
+      {
+        name: "Armamento Calcinante",
+        description: "La gran maza del gigante arde de forma permanente. Sus ataques de fuego ignoran la resistencia a la quemadura común."
+      }
+    ],
+    attacks: [
+      {
+        name: "Gran Maza de Latón Fundido",
+        description: "Golpe demoledor que baña el suelo con chispas de latón en llamas.",
+        damageDice: "3d8+5"
+      },
+      {
+        name: "Pisotón de Yunque de Fuego",
+        description: "Saca el pie descalzo golpeando el suelo en un cono de 3 casillas. Enemigos en el área quedan tumbados y sufren daño físico por las ondas de calor.",
+        damageDice: "2d6+4"
+      }
+    ]
+  },
+  {
+    id: "giant-cloud-tyrant",
+    name: "Monarca de los Gigantes de las Nubes",
+    englishName: "Cloud Giant Monarch",
+    level: "9",
+    levelValue: 9.0,
+    size: "Enorme",
+    sizeEnglish: "Huge",
+    hp: 165,
+    hpMax: 165,
+    speed: "7 casillas (Vuelo 9 casillas)",
+    armor: ArmorType.Heavy,
+    challengeRating: "8",
+    type: MonsterType.Leader,
+    group: "Gigantes Elementales",
+    groupDescription: "Antiquísimos titanes vinculados a las fuerzas puras del universo: tierra viva, fuego eterno y nubes de tormenta destructiva.",
+    groupTrait: GIANTS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Manto de Viento Divino",
+        description: "El gigante está protegido por corrientes de alta presión. Todos los proyectiles a distancia que se lancen contra él tienen desventaja para golpearlo."
+      },
+      {
+        name: "Resistencia Legendaria de Titán (2/día)",
+        description: "Si el Monarca falla un chequeo de salvación de aturdimiento físico o mental, puede elegir tener éxito en su lugar."
+      }
+    ],
+    attacks: [
+      {
+        name: "Espadón de Escarcha Ciclónica",
+        description: "Corte de barrido colosal con una espada gigantesca hecha de hielo puro de las nubes.",
+        damageDice: "4d10+6"
+      },
+      {
+        name: "Llamado de Rayos Celestes",
+        description: "Invoca 3 relámpagos del cielo en diferentes casillas dentro de 12 casillas (Recarga 5-6). Cada relámpago causa 5d6 de daño de trueno.",
+        damageDice: "5d6"
+      }
+    ]
+  }
+];
+
+export const GIANTS_LOOT = [
+  "Espadón de escarcha de un gigante de las nubes reducido de tamaño mágicamente",
+  "Fragmento de carbón eterno ardiente que arde bajo el agua de la montaña",
+  "Runas talladas en basalto que conceden poder sobre el magnetismo metálico",
+  "Cinto de cuero de Mammut curtido con refuerzos de latón antiguo de las forjas",
+  "Ojo de granito que permite ver la composición de los minerales bajo tierra",
+  "Corona de platino y nubes flotantes que nunca acumula aire caliente"
+];
+
+export const GIANTS_SAMPLE_ENCOUNTERS = [
+  {
+    name: "Emboscada del Bastión del Fuego y Piedra",
+    monsters: [
+      { id: "giant-cloud-tyrant", count: 1 },
+      { id: "giant-fire-forgekeeper", count: 1 },
+      { id: "giant-stone-scout-minion", count: 3 }
+    ],
+    description: "Una alianza profana entre los monarcas de la nube y los guardianes del fuego causa temblores tectónicos mortales a lo largo de las tierras libres."
+  }
+];
+
+// ==========================================
+// 16. DEMONIOS (DEMONS)
+// ==========================================
+
+export const DEMONS_GROUP_TRAIT = {
+  name: "Esencia Seductora",
+  description: "Los demonios manipulan los corazones y mentes de los mortales. Al inicio del turno de la criatura, cualquier héroe adyacente debe superar un chequeo mental (CD 12) o sufrir desventaja en sus tiradas de ataque contra cualquier objetivo que no sea este demonio durante este turno.",
+  trigger: "Iniciar el turno adyacente a un aliado demoníaco"
+};
+
+export const DEMONS_DATA: Monster[] = [
+  {
+    id: "demon-imp-minion",
+    name: "Duendecillo Imp del Fuego Minion",
+    englishName: "Fire Imp Minion",
+    level: "3",
+    levelValue: 3.0,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "5 casillas (Vuelo 6 casillas)",
+    armor: ArmorType.None,
+    challengeRating: "1/2",
+    type: MonsterType.Minion,
+    group: "Demonios",
+    groupDescription: "Habitantes de los planos de fuego y engaño, maestros en tentar a los mortales y consumir sus almas.",
+    groupTrait: DEMONS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 natural."
+      },
+      {
+        name: "Inspiración Diabólica",
+        description: "Mientras esté vivo, concede +1 de bonificación a las tiradas de ataque de los aliados demoníacos adyacentes a sus enemigos."
+      }
+    ],
+    attacks: [
+      {
+        name: "Mordidita Ardiente",
+        description: "Un pequeño y punzante mordisco con dientes de obsidiana ardiente.",
+        damageDice: "4 fuego"
+      }
+    ]
+  },
+  {
+    id: "demon-succubus-temptress",
+    name: "Súcubo Tentadora del Abismo",
+    englishName: "Abyssal Succubus Temptress",
+    level: "4",
+    levelValue: 4.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 44,
+    hpMax: 44,
+    speed: "6 casillas (Vuelo 6 casillas)",
+    armor: ArmorType.None,
+    challengeRating: "2",
+    type: MonsterType.Normal,
+    group: "Demonios",
+    groupDescription: "Habitantes de los planos de fuego y engaño, maestros en tentar a los mortales y consumir sus almas.",
+    groupTrait: DEMONS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Seducción Psíquica",
+        description: "Si un héroe inicia su turno bajo el efecto de la Esencia Seductora del Súcubo, recibe de inmediato 2d4 de daño psíquico debido a ilusiones abrumadoras de deseo."
+      }
+    ],
+    attacks: [
+      {
+        name: "Beso del Alma",
+        description: "Succiona la energía vital y mental con un beso sutil y altamente letal.",
+        damageDice: "2d6+4 psíquico"
+      },
+      {
+        name: "Látigo de Sombras Candentes",
+        description: "Látigo vaporoso de oscuridad que quema tanto la carne como los pensamientos del rival.",
+        damageDice: "1d8+3 fuego"
+      }
+    ]
+  },
+  {
+    id: "demon-incubus-torment",
+    name: "Íncubo del Tormento Mental",
+    englishName: "Mind Torment Incubus",
+    level: "5",
+    levelValue: 5.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 76,
+    hpMax: 76,
+    speed: "6 casillas (Vuelo 6 casillas)",
+    armor: ArmorType.Medium,
+    challengeRating: "4",
+    type: MonsterType.Elite,
+    group: "Demonios",
+    groupDescription: "Habitantes de los planos de fuego y engaño, maestros en tentar a los mortales y consumir sus almas.",
+    groupTrait: DEMONS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Mirada Hipnótica",
+        description: "Al final de su movimiento, el Íncubo puede obligar a un enemigo adyacente a realizar una tirada de salvación mental CD 13. Si falla, el objetivo debe gastar su siguiente reacción inmediatamente para interponerse y defender al Íncubo si es atacado."
+      }
+    ],
+    attacks: [
+      {
+        name: "Garra Profana Pesada",
+        description: "Golpe con garras afiladas imbuidas de ponzoña sombría y fuego elemental.",
+        damageDice: "2d8+4"
+      },
+      {
+        name: "Susurro Desgarrador",
+        description: "Lanza una palabra corrupta de tormento que causa estragos en los centros nerviosos del oponente (Rango 5).",
+        damageDice: "3d6 psíquico"
+      }
+    ]
+  }
+];
+
+export const DEMONS_LOOT = [
+  "Corazón de súcubo preservado que todavía emite calor y un sutil perfume a canela",
+  "Látigo de cuero negro espinado con runas abisales que canalizan calor elemental",
+  "Cáliz de obsidiana grabado con los nombres de doce señores del infierno",
+  "Fragmento de cuerno de íncubo sumamente afilado apto para engarzar en dagas de ataque psíquico",
+  "Pergamino con un pacto de sangre en blanco que otorga favores prohibidos una vez firmado",
+  "Piedra de alma resplandeciente que contiene fragmentos de aliento de azufre"
+];
+
+export const DEMONS_SAMPLE_ENCOUNTERS = [
+  {
+    name: "La Corte de los Susurros Ardientes",
+    monsters: [
+      { id: "demon-succubus-temptress", count: 1 },
+      { id: "demon-incubus-torment", count: 1 },
+      { id: "demon-imp-minion", count: 4 }
+    ],
+    description: "En las profundidades de un palacio en ruinas envuelto en bruma escarlata, una súcubo y un íncubo conspiran rodeados por imps ruidosos para corromper las almas del grupo."
+  }
+];
+
+// ==========================================
+// 17. ABERRACIONES (ABERRATIONS)
+// ==========================================
+
+export const ABERRATIONS_GROUP_TRAIT = {
+  name: "Fractura de la Psique",
+  description: "Las aberraciones operan en una frecuencia mental incomprensible de disonancia psiónica. Cuando logran infligir daño psíquico exitoso a un enemigo, reducen de forma temporal el valor del chequeo mental del objetivo en -2 hasta el final de la ronda de combate.",
+  trigger: "Infligir daño psíquico directo a un enemigo"
+};
+
+export const ABERRATIONS_DATA: Monster[] = [
+  {
+    id: "aberration-brain-parasite-minion",
+    name: "Cerebro Parásito Minion",
+    englishName: "Brain Larva Parasite Minion",
+    level: "2",
+    levelValue: 2.0,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: "Regla de Minion (1 golpe)",
+    hpMax: 1,
+    speed: "5 casillas",
+    armor: ArmorType.None,
+    challengeRating: "1/4",
+    type: MonsterType.Minion,
+    group: "Aberraciones",
+    groupDescription: "Criaturas de pesadilla nacidas del vacío psiónico, capaces de consumir la mente y tomar el control de sus víctimas.",
+    groupTrait: ABERRATIONS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Sin Puntos de Golpe",
+        description: "Cualquier daño mata a un minion. Sus ataques no pueden asestar golpes críticos y fallan automáticamente con un 1 de forma natural."
+      },
+      {
+        name: "Sobrecarga Sináptica",
+        description: "Cuando un cerebro parásito muere, provoca un doloroso zumbido psíquico. Todos los enemigos adyacentes sufren 2 de daño psíquico inmediato de forma automática."
+      }
+    ],
+    attacks: [
+      {
+        name: "Picadura Neuronal",
+        description: "Una descarga rápida de impulsos eléctricos negativos directo a los nervios.",
+        damageDice: "3 psíquico"
+      }
+    ]
+  },
+  {
+    id: "aberration-intellect-devourer",
+    name: "Devorador de Intelecto Acechador",
+    englishName: "Stalking Intellect Devourer",
+    level: "3",
+    levelValue: 3.0,
+    size: "Pequeño",
+    sizeEnglish: "Small",
+    hp: 36,
+    hpMax: 36,
+    speed: "6 casillas",
+    armor: ArmorType.None,
+    challengeRating: "1",
+    type: MonsterType.Normal,
+    group: "Aberraciones",
+    groupDescription: "Criaturas de pesadilla nacidas del vacío psiónico, capaces de consumir la mente y tomar el control de sus víctimas.",
+    groupTrait: ABERRATIONS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Infección Craneal (CD 12)",
+        description: "Cuando un enemigo queda inconsciente o a 0 puntos de golpe adyacente al devorador de intelecto, este puede deslizarse dentro de su cráneo. El devorador controla el cuerpo del héroe por un turno completo antes de ser expulsado mágicamente o destruido si se reduce al huésped a menos de la mita de su vida."
+      }
+    ],
+    attacks: [
+      {
+        name: "Punzadura Psiónica Directa",
+        description: "Lanza un rayo invisible que golpea dolorosamente el cerebro de la víctima en un cono psíquico.",
+        damageDice: "2d6+3 psíquico"
+      },
+      {
+        name: "Garras de Cuatro Patas",
+        description: "Zarpazos desesperados con sus patas carnosas con forma de dedos.",
+        damageDice: "1d8+2 físico"
+      }
+    ]
+  },
+  {
+    id: "aberration-sovereign-devourer",
+    name: "Soberano Devorador Filomental",
+    englishName: "Mind Sovereign Devourer",
+    level: "6",
+    levelValue: 6.0,
+    size: "Mediano",
+    sizeEnglish: "Medium",
+    hp: 98,
+    hpMax: 98,
+    speed: "6 casillas",
+    armor: ArmorType.Heavy,
+    challengeRating: "4",
+    type: MonsterType.Leader,
+    group: "Aberraciones",
+    groupDescription: "Criaturas de pesadilla nacidas del vacío psiónico, capaces de consumir la mente y tomar el control de sus víctimas.",
+    groupTrait: ABERRATIONS_GROUP_TRAIT,
+    abilities: [
+      {
+        name: "Controlador Psiónico de Huestes",
+        description: "Las aberraciones aliadas adyacentes al Soberano devorador obtienen un bono de +2 a su velocidad de movimiento y +1d4 de daño psíquico adicional en todos sus ataques."
+      },
+      {
+        name: "Resistencia Psiónica Legendaria (1/día)",
+        description: "Si el Soberano falla una tirada de salvación mental, puede elegir tener éxito automáticamente de forma psiónica canalizando el vacío."
+      }
+    ],
+    attacks: [
+      {
+        name: "Ondas Cerebrales Devastadoras",
+        description: "Una descarga de fuerza psíquica masiva en un cono de 5 casillas (Recarga 5-6). Causa 4d6 de daño psíquico y deja a los personajes aturdidos por un turno a menos que superen un chequeo mental de CD 13.",
+        damageDice: "4d6"
+      },
+      {
+        name: "Garras Desgarradoras de Mente",
+        description: "Zarpazos imbuidos con energía devoradora de pensamientos que rasgan la mente.",
+        damageDice: "2d8+4 psíquico"
+      }
+    ]
+  }
+];
+
+export const ABERRATIONS_LOOT = [
+  "Cerebro pulsante encerrado en un frasco de cristal lleno de un líquido nutritivo fosforescente",
+  "Diadema metálica de sintonía psiónica que concede resistencia al daño psíquico",
+  "Fragmento de caparazón brillante con reflejos violetas y formas geométricas imposibles",
+  "Masa gelatinosa que gotea de un devorador y reacciona vivamente a las ondas de pensamiento humanas",
+  "Amuleto de tercer ojo hecho de una piedra translúcida que vibra débilmente con frecuencias telepáticas",
+  "Punzón de hueso misterioso que emite un zumbido apenas audible que enfoca el intelecto"
+];
+
+export const ABERRATIONS_SAMPLE_ENCOUNTERS = [
+  {
+    name: "La Invasión de las Larvas Psiónicas",
+    monsters: [
+      { id: "aberration-sovereign-devourer", count: 1 },
+      { id: "aberration-intellect-devourer", count: 2 },
+      { id: "aberration-brain-parasite-minion", count: 4 }
+    ],
+    description: "En un sótano húmedo debajo de la biblioteca gremial, el Soberano Devorador dirige una colonia de devoradores en un rito profano para asimilar por completo las mentes del consejo de eruditos."
+  }
+];
+
+// ==========================================
 // MASTER EXPORTS FOR DYNAMIC INTERACTIVE APP
 // ==========================================
 
@@ -1462,7 +2801,16 @@ export const MONSTERS_DATA_MASTER: Monster[] = [
   ...ORCOS_DATA,
   ...CONSTRUCTOS_DATA,
   ...ECOS_DATA,
-  ...RELIQUIAS_DATA
+  ...RELIQUIAS_DATA,
+  ...MONSTRUOSIDADES_DATA,
+  ...OOZES_DATA,
+  ...HILLS_AND_FIELDS_DATA,
+  ...DRAGONS_DATA,
+  ...SPIDERS_DATA,
+  ...TROLLS_DATA,
+  ...GIANTS_DATA,
+  ...DEMONS_DATA,
+  ...ABERRATIONS_DATA
 ];
 
 export const ALL_SAMPLE_ENCOUNTERS: any[] = [
@@ -1470,7 +2818,14 @@ export const ALL_SAMPLE_ENCOUNTERS: any[] = [
   ...GOBLIN_SAMPLE_ENCOUNTERS,
   ...UNDEAD_SAMPLE_ENCOUNTERS,
   ...ORC_SAMPLE_ENCOUNTERS,
-  ...LIMBO_SAMPLE_ENCOUNTERS
+  ...LIMBO_SAMPLE_ENCOUNTERS,
+  ...HILLS_AND_FIELDS_SAMPLE_ENCOUNTERS,
+  ...DRAGON_SAMPLE_ENCOUNTERS,
+  ...SPIDERS_SAMPLE_ENCOUNTERS,
+  ...TROLLS_SAMPLE_ENCOUNTERS,
+  ...GIANTS_SAMPLE_ENCOUNTERS,
+  ...DEMONS_SAMPLE_ENCOUNTERS,
+  ...ABERRATIONS_SAMPLE_ENCOUNTERS
 ];
 
 export const MASTER_LOOT_POOL = [
@@ -1481,5 +2836,14 @@ export const MASTER_LOOT_POOL = [
   ...ORCO_LOOT,
   ...CONSTRUCTO_LOOT,
   ...ECO_LOOT,
-  ...RELIQUIA_LOOT
+  ...RELIQUIA_LOOT,
+  ...MONSTRUOSIDADES_LOOT,
+  ...OOZES_LOOT,
+  ...HILLS_AND_FIELDS_LOOT,
+  ...DRAGON_LOOT,
+  ...SPIDERS_LOOT,
+  ...TROLLS_LOOT,
+  ...GIANTS_LOOT,
+  ...DEMONS_LOOT,
+  ...ABERRATIONS_LOOT
 ];
